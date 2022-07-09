@@ -227,16 +227,19 @@ public class Main {
                 cd.show(10000);
                 */
                 cd.setColor(Color.WHITE);
-                cd.fillRectangle(0, 950, 1440, 250);
+                cd.fillRectangle(0,0,250, 350);
                 cd.setColor(Color.BLACK);
-                String textOutput = "Round " + round + " - ";
+                String textOutput = "";
                 if (round % 2 == 0) {
                     textOutput += "Black";
                 } else {
                     textOutput += "White";
                 }
-                cd.drawText(720, 1000, textOutput);
+                cd.drawText(130, 220, textOutput);
+                cd.drawText(130, 150, "" + round);
+                cd.drawText(130, 100, "Round");
                 cd.show();
+
                 if (eventLevel == 1) {
                     figure = null;
                     cd.clear();

@@ -31,7 +31,7 @@ public class Raven implements Figure{
     public boolean[][] availableMoves(Figure[][] board, int x, int y) {
         boolean[][] output = new boolean[8][8];
         for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
+            for (int j = 0; j < 4; j++) {
                 output[i][j] = true;
             }
         }
