@@ -37,4 +37,9 @@ public class Raven implements Figure{
         }
         return output;
     }
+
+    @Override
+    public boolean isBlack() {
+        return isBlack;
+    }
 }

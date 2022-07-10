@@ -31,4 +31,9 @@ public class Queen implements Figure{
     public boolean[][] availableMoves(Figure[][] board, int x, int y) {
         return new boolean[0][];
     }
+
+    @Override
+    public boolean isBlack() {
+        return isBlack;
+    }
 }

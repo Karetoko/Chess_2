@@ -36,4 +36,9 @@ public class Fish implements Figure{
         return new boolean[0][];
     }
 
+    @Override
+    public boolean isBlack() {
+        return isBlack;
+    }
+
 }

@@ -76,7 +76,7 @@ public class Main {
             hasWon = false;
             round = 1;
             prisonPlayerB = new Figure[2];
-            prisonPlayerW = new Figure[2];
+            prisonPlayerW = new Figure[2]; // position 0 is king, position 1 is queen (this is slightly different from the actual rules, but I chose to tweak this for simplicity's sake, sorry)
             cd.clear();
             cd.drawImage(170, 10, board);
             cd.show();
@@ -247,19 +247,32 @@ public class Main {
                     cd.show();
                     System.out.println("EVENT LEVEL = 1");
                     eventLevel = 4;
-                    // int[] clickPos = new int[2];
                     int[] boardPos;
-                    // clickPos[0] = me.getX(); // [0] = x-coordinate
-                    // clickPos[1] = me.getY(); // [1] = y-coordinate
                     boardPos = reverseBoardCoordinates(inputPos[0], inputPos[1]);
                     if (chessboard[boardPos[1]][boardPos[0]] != null) {
                         figure = chessboard[boardPos[1]][boardPos[0]];
-                        int[] figurePos = boardCoordinates(boardPos[0], boardPos[1]);
-                        cd.drawImage(figurePos[0], figurePos[1], "./src/red.png");
-                        movesArray = figure.availableMoves(chessboard, boardPos[0], boardPos[1]);
-                        drawMoves(cd, movesArray);
-                        cd.show();
-                        eventLevel = 2;
+                        boolean roundColour = (round % 2 == 0);
+                        if (figure.isBlack() == roundColour) {
+                            int[] figurePos = boardCoordinates(boardPos[0], boardPos[1]);
+                            cd.drawImage(figurePos[0], figurePos[1], "./src/red.png");
+                            movesArray = figure.availableMoves(chessboard, boardPos[0], boardPos[1]);
+                            drawMoves(cd, movesArray);
+                            cd.show();
+                            eventLevel = 2;
+                        } else {
+                            cd.clear();
+                            drawBoard(cd);
+                            String temp = "It's ";
+                            if (round % 2 == 1) {
+                                temp += "white's ";
+                            } else {
+                                temp += "black's ";
+                            }
+                            temp += "turn to move!";
+                            cd.drawText(720, 1000, temp);
+                            cd.show();
+                            eventLevel = 0;
+                        }
                     } else {
                         eventLevel = 0;
                     }
@@ -278,6 +291,9 @@ public class Main {
                         drawBoard(cd);
                         cd.show();
                         round++;
+                        if ((prisonPlayerB[0].getClass() == King.class && prisonPlayerB[1].getClass() == Queen.class) || (prisonPlayerW[0].getClass() == King.class && prisonPlayerW[1].getClass() == Queen.class)) {
+                            hasWon = true; // game-ending condition
+                        }
                         eventLevel = 0;
                     } else {
                         cd.clear();

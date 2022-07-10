@@ -9,4 +9,7 @@ public interface Figure {
 
     // Returns the possible moveable areas for this figure.
     boolean[][] availableMoves(Figure[][] board, int x, int y);
+
+    // "getter" regarding if a figure is black or white.
+    boolean isBlack();
 }
