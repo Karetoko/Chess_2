@@ -33,12 +33,63 @@ public class Fish implements Figure{
 
     @Override
     public boolean[][] availableMoves(Figure[][] board, int x, int y) {
-        return new boolean[0][];
+        boolean[][] output = new boolean[8][8];
+        if (this.isQueen) {
+            System.out.println();
+        } else {
+            String temp = "";
+            for (int i = 0; i < 8; i++) {
+                for (int j = 0; j < 8; j++) {
+                    if (board[i][j] == null) {
+                        temp += " 0 ";
+                    } else {
+                        temp += " I ";
+                    }
+                }
+                temp+= "\n";
+            }
+            System.out.println(temp);
+            if (this.isBlack) {
+                // IMPORTANT: coordinates for board are reversed!!!!
+                if (board[y + 1][x] == null && (y+1 < 8)) {
+                    output[x][y + 1] = true;
+                }
+                if ((x + 1 < 8) && (y + 1 < 8) && board[y + 1][x + 1] != null) {
+                    output[x + 1][y + 1] = true;
+                }
+                if ((x - 1 >= 0) && (y + 1 < 8) && board[y + 1][x - 1] != null) {
+                    output[x - 1][y + 1] = true;
+                }
+            } else {
+                if (board[y - 1][x] == null && (y-1 >= 0)) {
+                    output[x][y - 1] = true;
+                }
+                if ((x + 1 < 8) && (y-1 >= 0) && board[y - 1][x + 1] != null) {
+                    output[x + 1][y - 1] = true;
+                }
+                if ((x - 1 >= 0) && (y-1 >= 0) && board[y - 1][x - 1] != null) {
+                    output[x - 1][y - 1] = true;
+                }
+
+
+            }
+
+        }
+        return output;
     }
 
     @Override
     public boolean isBlack() {
         return isBlack;
+    }
+
+    public void changeToQueen() {
+        if (this.isBlack) {
+            this.main = fishQueenB;
+        } else {
+            this.main = fishQueenW;
+        }
+        this.isQueen = true;
     }
 
 }

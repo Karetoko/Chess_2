@@ -240,6 +240,11 @@ public class Main {
                 cd.drawText(130, 100, "Round");
                 cd.show();
 
+                /*
+                Small explanation to the eventLevels:
+                    -
+                */
+
                 if (eventLevel == 1) {
                     figure = null;
                     cd.clear();
@@ -247,7 +252,7 @@ public class Main {
                     cd.show();
                     System.out.println("EVENT LEVEL = 1");
                     eventLevel = 4;
-                    int[] boardPos;
+                    int[] boardPos; // positions on the board, not actual coordinates on window!
                     boardPos = reverseBoardCoordinates(inputPos[0], inputPos[1]);
                     if (chessboard[boardPos[1]][boardPos[0]] != null) {
                         figure = chessboard[boardPos[1]][boardPos[0]];
@@ -291,8 +296,10 @@ public class Main {
                         drawBoard(cd);
                         cd.show();
                         round++;
-                        if ((prisonPlayerB[0].getClass() == King.class && prisonPlayerB[1].getClass() == Queen.class) || (prisonPlayerW[0].getClass() == King.class && prisonPlayerW[1].getClass() == Queen.class)) {
-                            hasWon = true; // game-ending condition
+                        if (prisonPlayerB[0] != null && prisonPlayerB[1] != null && prisonPlayerW[0] != null && prisonPlayerW[1] != null) {
+                            if ((prisonPlayerB[0].getClass() == King.class && prisonPlayerB[1].getClass() == Queen.class) || (prisonPlayerW[0].getClass() == King.class && prisonPlayerW[1].getClass() == Queen.class)) {
+                                hasWon = true; // game-ending condition
+                            }
                         }
                         eventLevel = 0;
                     } else {
