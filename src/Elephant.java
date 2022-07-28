@@ -37,4 +37,9 @@ public class Elephant implements Figure{
     public boolean isBlack() {
         return isBlack;
     }
+
+    @Override
+    public void changeToQueen() {
+
+    }
 }

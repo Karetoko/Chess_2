@@ -26,4 +26,9 @@ public class Bear implements Figure{
     public boolean isBlack() {
         return false; // Bear doesn't have any colour coding.
     }
+
+    @Override
+    public void changeToQueen() {
+
+    }
 }

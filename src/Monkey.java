@@ -38,4 +38,9 @@ public class Monkey implements Figure{
     public boolean isBlack() {
         return isBlack;
     }
+
+    @Override
+    public void changeToQueen() {
+
+    }
 }

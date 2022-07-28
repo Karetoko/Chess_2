@@ -10,6 +10,7 @@ public class Fish implements Figure{
     File fishW = new File("./src/fish_w.png");
     File fishQueenB = new File("./src/fish_king_b.png");
     File fishQueenW = new File("./src/fish_king_w.png");
+    Queen fishQueenTemplate;
 
     public Fish(boolean isBlack) {
         this.isBlack = isBlack;
@@ -35,8 +36,10 @@ public class Fish implements Figure{
     public boolean[][] availableMoves(Figure[][] board, int x, int y) {
         boolean[][] output = new boolean[8][8];
         if (this.isQueen) {
-            System.out.println();
+            output = fishQueenTemplate.availableMoves(board, x, y);
         } else {
+            // for testing/monitoring purposes
+            /*
             String temp = "";
             for (int i = 0; i < 8; i++) {
                 for (int j = 0; j < 8; j++) {
@@ -49,31 +52,37 @@ public class Fish implements Figure{
                 temp+= "\n";
             }
             System.out.println(temp);
+            */
             if (this.isBlack) {
                 // IMPORTANT: coordinates for board are reversed!!!!
                 if (board[y + 1][x] == null && (y+1 < 8)) {
                     output[x][y + 1] = true;
                 }
                 if ((x + 1 < 8) && (y + 1 < 8) && board[y + 1][x + 1] != null) {
-                    output[x + 1][y + 1] = true;
+                    if (!board[y + 1][x + 1].isBlack()) {
+                        output[x + 1][y + 1] = true;
+                    }
                 }
                 if ((x - 1 >= 0) && (y + 1 < 8) && board[y + 1][x - 1] != null) {
-                    output[x - 1][y + 1] = true;
+                    if (!board[y + 1][x - 1].isBlack()) {
+                        output[x - 1][y + 1] = true;
+                    }
                 }
             } else {
                 if (board[y - 1][x] == null && (y-1 >= 0)) {
                     output[x][y - 1] = true;
                 }
                 if ((x + 1 < 8) && (y-1 >= 0) && board[y - 1][x + 1] != null) {
-                    output[x + 1][y - 1] = true;
+                    if (board[y - 1][x + 1].isBlack()) {
+                        output[x + 1][y - 1] = true;
+                    }
                 }
                 if ((x - 1 >= 0) && (y-1 >= 0) && board[y - 1][x - 1] != null) {
-                    output[x - 1][y - 1] = true;
+                    if (board[y - 1][x - 1].isBlack()) {
+                        output[x - 1][y - 1] = true;
+                    }
                 }
-
-
             }
-
         }
         return output;
     }
@@ -83,6 +92,7 @@ public class Fish implements Figure{
         return isBlack;
     }
 
+    @Override
     public void changeToQueen() {
         if (this.isBlack) {
             this.main = fishQueenB;
@@ -90,6 +100,7 @@ public class Fish implements Figure{
             this.main = fishQueenW;
         }
         this.isQueen = true;
+        fishQueenTemplate = new Queen(this.isBlack);
     }
 
 }

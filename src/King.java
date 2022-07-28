@@ -40,4 +40,9 @@ public class King implements Figure{
     public boolean isBlack() {
         return isBlack;
     }
+
+    @Override
+    public void changeToQueen() {
+
+    }
 }

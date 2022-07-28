@@ -12,4 +12,7 @@ public interface Figure {
 
     // "getter" regarding if a figure is black or white.
     boolean isBlack();
+
+    // only used for the "Fish" class
+    public void changeToQueen();
 }

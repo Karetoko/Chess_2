@@ -293,6 +293,14 @@ public class Main {
                             chessboard[boardPos[1]][boardPos[0]] = null;
                             System.out.println("CALLED");
                         }
+                        for (int i = 0; i < 8; i++) {
+                            if (chessboard[0][i] != null && chessboard[0][i].getClass() == Fish.class && !chessboard[0][i].isBlack()) {
+                                chessboard[0][i].changeToQueen();
+                            }
+                            if (chessboard[7][i] != null && chessboard[7][i].getClass() == Fish.class && chessboard[7][i].isBlack()) {
+                                chessboard[7][i].changeToQueen();
+                            }
+                        }
                         drawBoard(cd);
                         cd.show();
                         round++;
