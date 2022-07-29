@@ -295,10 +295,10 @@ public class Main {
                         }
                         for (int i = 0; i < 8; i++) {
                             if (chessboard[0][i] != null && chessboard[0][i].getClass() == Fish.class && !chessboard[0][i].isBlack()) {
-                                chessboard[0][i].changeToQueen();
+                                chessboard[0][i].changeMode();
                             }
                             if (chessboard[7][i] != null && chessboard[7][i].getClass() == Fish.class && chessboard[7][i].isBlack()) {
-                                chessboard[7][i].changeToQueen();
+                                chessboard[7][i].changeMode();
                             }
                         }
                         drawBoard(cd);

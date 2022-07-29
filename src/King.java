@@ -42,7 +42,7 @@ public class King implements Figure{
     }
 
     @Override
-    public void changeToQueen() {
+    public void changeMode() {
 
     }
 }

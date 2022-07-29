@@ -93,7 +93,8 @@ public class Fish implements Figure{
     }
 
     @Override
-    public void changeToQueen() {
+    // puropse of changeMode here: change fish to fishQueen (permanent for given object!)
+    public void changeMode() {
         if (this.isBlack) {
             this.main = fishQueenB;
         } else {

@@ -44,7 +44,7 @@ public class Raven implements Figure{
     }
 
     @Override
-    public void changeToQueen() {
+    public void changeMode() {
 
     }
 }

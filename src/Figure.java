@@ -13,6 +13,16 @@ public interface Figure {
     // "getter" regarding if a figure is black or white.
     boolean isBlack();
 
-    // only used for the "Fish" class
-    public void changeToQueen();
+    // mainly used for changing settings on any figure; usages can vary wildly (read below)!
+    /*
+    ---USAGES---
+    Fish: changes fish to fishQueen (permanent for given object!)
+    Raven: Changes option for if Raven is allowed to kill any opponents in a given round (toggle to allow/disallow)
+    Bear: planned -> changes state from starting point to being moved (permanent!)
+    Elephant: -none-
+    Monkey: planned -> activates/deactivates "king retrieval" mode (main usage: different output in "availableMoves" method; toggle).
+    Queen: -none-
+    King: planned -> removes banana from king when rescued by monkey (permanent!)
+    */
+    public void changeMode();
 }
