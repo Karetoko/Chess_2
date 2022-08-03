@@ -39,16 +39,16 @@ public class Main {
         cd.setTitle("Chess 2 - Electric Boogaloo");
         cd.drawImage(440, 300, chess2);
         cd.show();
-        cd.show(2000);
+        cd.show(1000);
         for (int i = 0; i < 256; i++) {
             cd.clear();
             cd.drawImage(440, 300, chess2);
             Color var = new Color(255-i , 255-i, 255-i);
             cd.setColor(var);
             cd.drawText(720, 600, "Programmed by Karetoko :)");
-            cd.show(8);
+            cd.show(2);
         }
-        cd.show(1000);
+        cd.show(500);
         format.setFontSize(36);
         cd.drawText(720, 880, "Press any keyboard button to continue");
         cd.show();
@@ -116,101 +116,101 @@ public class Main {
             Bear Bear = new Bear();
             int[] temp = new int[2];
             int timeout = 100;
-            temp = boardCoordinates(0,0);
+            temp = fromBoardCoordinates(0,0);
             chessboard[0][0].drawFigure(cd, temp[0], temp[1]);
             cd.show(timeout);
-            temp = boardCoordinates(1,0);
+            temp = fromBoardCoordinates(1,0);
             chessboard[0][1].drawFigure(cd, temp[0], temp[1]);
             cd.show(timeout);
-            temp = boardCoordinates(2,0);
+            temp = fromBoardCoordinates(2,0);
             chessboard[0][2].drawFigure(cd, temp[0], temp[1]);
             cd.show(timeout);
-            temp = boardCoordinates(3,0);
+            temp = fromBoardCoordinates(3,0);
             chessboard[0][3].drawFigure(cd, temp[0], temp[1]);
             cd.show(timeout);
-            temp = boardCoordinates(4,0);
+            temp = fromBoardCoordinates(4,0);
             chessboard[0][4].drawFigure(cd, temp[0], temp[1]);
             cd.show(timeout);
-            temp = boardCoordinates(5,0);
+            temp = fromBoardCoordinates(5,0);
             chessboard[0][5].drawFigure(cd, temp[0], temp[1]);
             cd.show(timeout);
-            temp = boardCoordinates(6,0);
+            temp = fromBoardCoordinates(6,0);
             chessboard[0][6].drawFigure(cd, temp[0], temp[1]);
             cd.show(timeout);
-            temp = boardCoordinates(7,0);
+            temp = fromBoardCoordinates(7,0);
             chessboard[0][7].drawFigure(cd, temp[0], temp[1]);
             cd.show(timeout);
-            temp = boardCoordinates(0,1);
+            temp = fromBoardCoordinates(0,1);
             chessboard[1][0].drawFigure(cd, temp[0], temp[1]);
             cd.show(timeout);
-            temp = boardCoordinates(1,1);
+            temp = fromBoardCoordinates(1,1);
             chessboard[1][1].drawFigure(cd, temp[0], temp[1]);
             cd.show(timeout);
-            temp = boardCoordinates(2,1);
+            temp = fromBoardCoordinates(2,1);
             chessboard[1][2].drawFigure(cd, temp[0], temp[1]);
             cd.show(timeout);
-            temp = boardCoordinates(3,1);
+            temp = fromBoardCoordinates(3,1);
             chessboard[1][3].drawFigure(cd, temp[0], temp[1]);
             cd.show(timeout);
-            temp = boardCoordinates(4,1);
+            temp = fromBoardCoordinates(4,1);
             chessboard[1][4].drawFigure(cd, temp[0], temp[1]);
             cd.show(timeout);
-            temp = boardCoordinates(5,1);
+            temp = fromBoardCoordinates(5,1);
             chessboard[1][5].drawFigure(cd, temp[0], temp[1]);
             cd.show(timeout);
-            temp = boardCoordinates(6,1);
+            temp = fromBoardCoordinates(6,1);
             chessboard[1][6].drawFigure(cd, temp[0], temp[1]);
             cd.show(timeout);
-            temp = boardCoordinates(7,1);
+            temp = fromBoardCoordinates(7,1);
             chessboard[1][7].drawFigure(cd, temp[0], temp[1]);
             cd.show(timeout);
 
-            temp = boardCoordinates(0,6);
+            temp = fromBoardCoordinates(0,6);
             chessboard[6][0].drawFigure(cd, temp[0], temp[1]);
             cd.show(timeout);
-            temp = boardCoordinates(1,6);
+            temp = fromBoardCoordinates(1,6);
             chessboard[6][1].drawFigure(cd, temp[0], temp[1]);
             cd.show(timeout);
-            temp = boardCoordinates(2,6);
+            temp = fromBoardCoordinates(2,6);
             chessboard[6][2].drawFigure(cd, temp[0], temp[1]);
             cd.show(timeout);
-            temp = boardCoordinates(3,6);
+            temp = fromBoardCoordinates(3,6);
             chessboard[6][3].drawFigure(cd, temp[0], temp[1]);
             cd.show(timeout);
-            temp = boardCoordinates(4,6);
+            temp = fromBoardCoordinates(4,6);
             chessboard[6][4].drawFigure(cd, temp[0], temp[1]);
             cd.show(timeout);
-            temp = boardCoordinates(5,6);
+            temp = fromBoardCoordinates(5,6);
             chessboard[6][5].drawFigure(cd, temp[0], temp[1]);
             cd.show(timeout);
-            temp = boardCoordinates(6,6);
+            temp = fromBoardCoordinates(6,6);
             chessboard[6][6].drawFigure(cd, temp[0], temp[1]);
             cd.show(timeout);
-            temp = boardCoordinates(7,6);
+            temp = fromBoardCoordinates(7,6);
             chessboard[6][7].drawFigure(cd, temp[0], temp[1]);
             cd.show(timeout);
-            temp = boardCoordinates(0,7);
+            temp = fromBoardCoordinates(0,7);
             chessboard[7][0].drawFigure(cd, temp[0], temp[1]);
             cd.show(timeout);
-            temp = boardCoordinates(1,7);
+            temp = fromBoardCoordinates(1,7);
             chessboard[7][1].drawFigure(cd, temp[0], temp[1]);
             cd.show(timeout);
-            temp = boardCoordinates(2,7);
+            temp = fromBoardCoordinates(2,7);
             chessboard[7][2].drawFigure(cd, temp[0], temp[1]);
             cd.show(timeout);
-            temp = boardCoordinates(3,7);
+            temp = fromBoardCoordinates(3,7);
             chessboard[7][3].drawFigure(cd, temp[0], temp[1]);
             cd.show(timeout);
-            temp = boardCoordinates(4,7);
+            temp = fromBoardCoordinates(4,7);
             chessboard[7][4].drawFigure(cd, temp[0], temp[1]);
             cd.show(timeout);
-            temp = boardCoordinates(5,7);
+            temp = fromBoardCoordinates(5,7);
             chessboard[7][5].drawFigure(cd, temp[0], temp[1]);
             cd.show(timeout);
-            temp = boardCoordinates(6,7);
+            temp = fromBoardCoordinates(6,7);
             chessboard[7][6].drawFigure(cd, temp[0], temp[1]);
             cd.show(timeout);
-            temp = boardCoordinates(7,7);
+            temp = fromBoardCoordinates(7,7);
             chessboard[7][7].drawFigure(cd, temp[0], temp[1]);
             cd.show(timeout);
             Bear.drawFigure(cd,670, 440);
@@ -253,12 +253,12 @@ public class Main {
                     System.out.println("EVENT LEVEL = 1");
                     eventLevel = 4;
                     int[] boardPos; // positions on the board, not actual coordinates on window!
-                    boardPos = reverseBoardCoordinates(inputPos[0], inputPos[1]);
+                    boardPos = toBoardCoordinates(inputPos[0], inputPos[1]);
                     if (chessboard[boardPos[1]][boardPos[0]] != null) {
                         figure = chessboard[boardPos[1]][boardPos[0]];
                         boolean roundColour = (round % 2 == 0);
                         if (figure.isBlack() == roundColour) {
-                            int[] figurePos = boardCoordinates(boardPos[0], boardPos[1]);
+                            int[] figurePos = fromBoardCoordinates(boardPos[0], boardPos[1]);
                             cd.drawImage(figurePos[0], figurePos[1], "./src/red.png");
                             movesArray = figure.availableMoves(chessboard, boardPos[0], boardPos[1]);
                             drawMoves(cd, movesArray);
@@ -283,16 +283,36 @@ public class Main {
                     }
                 } else if (eventLevel == 3) {
                     System.out.println("EVENT LEVEL = 3");
-                    int[] boardPosConf = reverseBoardCoordinates(inputPosConf[0],inputPosConf[1]);
+                    int[] boardPosConf = toBoardCoordinates(inputPosConf[0],inputPosConf[1]);
                     if (movesArray[boardPosConf[0]][boardPosConf[1]]) {
                         eventLevel = 4;
-                        int[] boardPos = reverseBoardCoordinates(inputPos[0], inputPos[1]);
+                        int[] boardPos = toBoardCoordinates(inputPos[0], inputPos[1]);
                         figure.movementAnimation(cd, inputPos[0], inputPos[1], inputPosConf[0], inputPosConf[1]);
+                        Figure tempSave = null;
+                        if (chessboard[boardPosConf[1]][boardPosConf[0]] != null) {
+                            tempSave = chessboard[boardPosConf[1]][boardPosConf[0]];
+                        }
                         chessboard[boardPosConf[1]][boardPosConf[0]] = chessboard[boardPos[1]][boardPos[0]];
                         if ((boardPosConf[0] != boardPos[0]) || (boardPosConf[1] != boardPos[1])) {
                             chessboard[boardPos[1]][boardPos[0]] = null;
                             System.out.println("CALLED");
                         }
+                        if (tempSave != null && (tempSave.getClass() == King.class || tempSave.getClass() == Queen.class)) {
+                            if (tempSave.getClass() == King.class) {
+                                if (tempSave.isBlack()) {
+                                    prisonPlayerW[0] = tempSave;
+                                } else {
+                                    prisonPlayerB[0] = tempSave;
+                                }
+                            } else { // for Queen
+                                if (tempSave.isBlack()) {
+                                    prisonPlayerW[1] = tempSave;
+                                } else {
+                                    prisonPlayerB[1] = tempSave;
+                                }
+                            }
+                        }
+
                         for (int i = 0; i < 8; i++) {
                             if (chessboard[0][i] != null && chessboard[0][i].getClass() == Fish.class && !chessboard[0][i].isBlack()) {
                                 chessboard[0][i].changeMode();
@@ -301,21 +321,82 @@ public class Main {
                                 chessboard[7][i].changeMode();
                             }
                         }
+
+                        if (chessboard[boardPosConf[1]][boardPosConf[0]] != null && chessboard[boardPosConf[1]][boardPosConf[0]].getClass() == Monkey.class && chessboard[boardPosConf[1]][boardPosConf[0]].customRequest()) {
+                            chessboard[boardPosConf[1]][boardPosConf[0]].changeMode();
+                            if (chessboard[4][0] == null) {
+                                chessboard[4][0] = prisonPlayerW[0];
+                                prisonPlayerW[0] = null;
+                            }
+                            chessboard[4][0].changeMode();
+                        }
+
                         drawBoard(cd);
                         cd.show();
+
+
+                        if ((chessboard[4][0] != null || chessboard[3][7] != null)) {
+                            if (chessboard[4][0].getClass() == Monkey.class && prisonPlayerW[0].customRequest() && (round % 2 == 0) && boardPosConf[0] == 0 && boardPosConf[1] == 4) {
+                                inputPos = fromBoardCoordinates(4, 0);
+                                eventLevel = 5;
+                                if (!(boardPos[0] == 0 && boardPos[1] == 4)) {
+                                    round--;
+                                }
+                                chessboard[4][0].changeMode();
+                                System.out.println("THROUGH MAIN");
+                            }
+                        }
+
                         round++;
+
                         if (prisonPlayerB[0] != null && prisonPlayerB[1] != null && prisonPlayerW[0] != null && prisonPlayerW[1] != null) {
                             if ((prisonPlayerB[0].getClass() == King.class && prisonPlayerB[1].getClass() == Queen.class) || (prisonPlayerW[0].getClass() == King.class && prisonPlayerW[1].getClass() == Queen.class)) {
                                 hasWon = true; // game-ending condition
                             }
                         }
-                        eventLevel = 0;
+
+                        // eventLevel shall not be changed when a monkey is on retrieval mode!
+                        if (!(chessboard[4][0] != null && chessboard[4][0].getClass() == Monkey.class && chessboard[4][0].customRequest())) {
+                            eventLevel = 0;
+                        }
                     } else {
                         cd.clear();
                         drawBoard(cd);
-                        cd.drawText(720, 1000, "You cannot move there with this figure!");
+                        if (!(chessboard[4][0] != null && chessboard[4][0].getClass() == Monkey.class)) {
+                            cd.drawText(720, 1000, "You cannot move there with this figure!");
+                        }
                         cd.show();
-                        eventLevel = 0;
+                        if (!(chessboard[4][0] != null && chessboard[4][0].getClass() == Monkey.class)) {
+                            eventLevel = 0;
+                            System.out.println("CALLED AT 3");
+                        } else {
+                            eventLevel = 5;
+                            // chessboard[4][0].changeMode();
+                        }
+                    }
+                } else if (eventLevel == 5) {
+                    inputPos = fromBoardCoordinates(0,4);
+                    figure = null;
+                    cd.clear();
+                    drawBoard(cd);
+                    cd.show();
+                    System.out.println("EVENT LEVEL = 5");
+                    eventLevel = 4;
+                    int[] boardPos; // positions on the board, not actual coordinates on window!
+                    boardPos = toBoardCoordinates(inputPos[0], inputPos[1]);
+                    if (chessboard[boardPos[1]][boardPos[0]] != null) {
+                        figure = chessboard[boardPos[1]][boardPos[0]];
+                        boolean roundColour = (round % 2 == 0);
+                        int[] figurePos = fromBoardCoordinates(boardPos[0], boardPos[1]);
+                        cd.drawImage(figurePos[0], figurePos[1], "./src/red.png");
+                        movesArray = figure.availableMoves(chessboard, boardPos[0], boardPos[1]);
+                        drawMoves(cd, movesArray);
+                        cd.show();
+                        eventLevel = 2;
+                        // chessboard[boardPos[1]][boardPos[0]].changeMode();
+                    } else {
+                        eventLevel = 5;
+                        System.out.println("CALLED 5");
                     }
                 }
                 cd.show(5);
@@ -328,7 +409,7 @@ public class Main {
         if (eventLevel == 0) {
             inputPos[0] = me.getX();
             inputPos[1] = me.getY();
-            int[] check = reverseBoardCoordinates(inputPos[0], inputPos[1]);
+            int[] check = toBoardCoordinates(inputPos[0], inputPos[1]);
             if (check[0] >= 0 && check[0] <= 7 && check[1] >= 0 && check[1] <= 7 && inputPos[0] >= 327 && inputPos[1] >= 98) {
                 eventLevel = 1;
             }
@@ -337,7 +418,7 @@ public class Main {
         } else if (eventLevel == 2) {
             inputPosConf[0] = me.getX();
             inputPosConf[1] = me.getY();
-            int[] check = reverseBoardCoordinates(inputPosConf[0], inputPosConf[1]);
+            int[] check = toBoardCoordinates(inputPosConf[0], inputPosConf[1]);
             if (check[0] >= 0 && check[0] <= 7 && check[1] >= 0 && check[1] <= 7 && inputPosConf[0] >= 327 && inputPosConf[1] >= 98) {
                 eventLevel = 3;
             }
@@ -364,7 +445,7 @@ public class Main {
     }
 
     // input is board position (0-7), output is actual coordinates as format int[2]{x-coords, y-coords}.
-    private static int[] boardCoordinates(int x, int y) {
+    private static int[] fromBoardCoordinates(int x, int y) {
         int[] output = new int[2];
         output[0] = 328 + x * 97;
         output[1] = 100 + y * 97;
@@ -372,7 +453,7 @@ public class Main {
     }
 
     // the reverse operation of boardCoordinates(); i.e. from actual coordinates to board position.
-    private static int[] reverseBoardCoordinates(int x, int y) {
+    private static int[] toBoardCoordinates(int x, int y) {
         int[] output = new int[2];
         output[0] = (int) (((x-328)/97));
         output[1] = (int) (((y-100)/97));
@@ -383,7 +464,7 @@ public class Main {
         for (int i = 0; i < ma.length; i++) {
             for (int j = 0; j < ma[i].length; j++) {
                 if (ma[i][j]) {
-                    int[] temp = boardCoordinates(i, j);
+                    int[] temp = fromBoardCoordinates(i, j);
                     cd.drawImage(temp[0], temp[1], "./src/blue.png");
                 }
             }
@@ -396,7 +477,7 @@ public class Main {
             int[] clickConf = new int[2];
             clickConf[0] = me.getX(); // [0] = x-coordinate
             clickConf[1] = me.getY(); // [1] = y-coordinate
-            int[] boardPosConf = reverseBoardCoordinates(clickConf[0],clickConf[1]);
+            int[] boardPosConf = toBoardCoordinates(clickConf[0],clickConf[1]);
             if (!movesArray[boardPosConf[0]][boardPosConf[1]]) {
                 cd.clear();
                 drawBoard(cd);
@@ -417,10 +498,22 @@ public class Main {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 if (chessboard[j][i] != null) {
-                    int[] temp = boardCoordinates(i, j);
+                    int[] temp = fromBoardCoordinates(i, j);
                     chessboard[j][i].drawFigure(cd, temp[0], temp[1]);
                 }
             }
+        }
+        if (prisonPlayerB[0] != null) {
+            prisonPlayerB[0].drawFigure(cd, 1104+60 ,388);
+        }
+        if (prisonPlayerB[1] != null) {
+            prisonPlayerB[1].drawFigure(cd, 1104+60 ,485);
+        }
+        if (prisonPlayerW[0] != null) {
+            prisonPlayerW[0].drawFigure(cd, 231-60,485);
+        }
+        if (prisonPlayerW[1] != null) {
+            prisonPlayerW[1].drawFigure(cd, 231-60 ,388);
         }
     }
 
@@ -435,11 +528,11 @@ public class Main {
             int[] boardPos;
             clickPos[0] = me.getX(); // [0] = x-coordinate
             clickPos[1] = me.getY(); // [1] = y-coordinate
-            boardPos = reverseBoardCoordinates(clickPos[0], clickPos[1]);
+            boardPos = toBoardCoordinates(clickPos[0], clickPos[1]);
             if (chessboard[boardPos[0]][boardPos[1]] != null) {
                 figure = chessboard[boardPos[0]][boardPos[1]];
             }
-            int[] figurePos = boardCoordinates(boardPos[0], boardPos[1]);
+            int[] figurePos = fromBoardCoordinates(boardPos[0], boardPos[1]);
             cd.drawImage(figurePos[0], figurePos[1], "./src/red.png");
             movesArray = figure.availableMoves(chessboard, boardPos[0], boardPos[1]);
             drawMoves(cd, movesArray);
@@ -464,7 +557,7 @@ public class Main {
                 cd.show(10);
             }
 
-            int[] boardPosConf = reverseBoardCoordinates(playerPosSelect[0],playerPosSelect[1]);
+            int[] boardPosConf = toBoardCoordinates(playerPosSelect[0],playerPosSelect[1]);
             figure.movementAnimation(cd,boardPos[0],boardPos[1],boardPosConf[0],boardPosConf[1]);
             chessboard[boardPosConf[0]][boardPosConf[1]] = chessboard[boardPos[0]][boardPos[1]];
             chessboard[boardPos[0]][boardPos[1]] = null;

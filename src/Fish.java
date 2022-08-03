@@ -104,4 +104,9 @@ public class Fish implements Figure{
         fishQueenTemplate = new Queen(this.isBlack);
     }
 
+    @Override
+    public boolean customRequest() {
+        return false;
+    }
+
 }

@@ -4,7 +4,7 @@ import java.io.File;
 
 public class King implements Figure{
     public boolean isBlack;
-    private boolean hasBanana;
+    public boolean hasBanana;
     private File main;
     File kingB = new File("./src/king_b.png");
     File kingW = new File("./src/king_w.png");
@@ -33,7 +33,17 @@ public class King implements Figure{
 
     @Override
     public boolean[][] availableMoves(Figure[][] board, int x, int y) {
-        return new boolean[0][];
+        boolean[][] output = new boolean[8][8];
+        for (int i = -1; i < 2; i++) {
+            for (int j = -1; j < 2; j++) {
+                if (!(i == 0 && j == 0)) {
+                    if ((x + i < 8) && (x + i >= 0) && (y + j < 8) && (y + j >= 0) && (board[y + j][x + i] == null || board[y + j][x + i].isBlack() != this.isBlack)) {
+                        output[x + i][y + j] = true;
+                    }
+                }
+            }
+        }
+        return output;
     }
 
     @Override
@@ -43,6 +53,12 @@ public class King implements Figure{
 
     @Override
     public void changeMode() {
+        hasBanana = false;
+    }
 
+    @Override
+    public boolean customRequest() {
+        // returns if King has banana
+        return hasBanana;
     }
 }

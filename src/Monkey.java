@@ -6,6 +6,7 @@ public class Monkey implements Figure{
     public boolean isBlack;
     private boolean tookBanana;
     private File main;
+    private boolean retrievalMode = false;
     File monkeyB = new File("./src/monkey_b.png");
     File monkeyW = new File("./src/monkey_w.png");
 
@@ -70,6 +71,16 @@ public class Monkey implements Figure{
                         }
                         stepCount++;
                     }
+                    if (retrievalMode) {
+                        for (int a = -1; a < 2; a++) {
+                            for (int b = -1; b < 2; b++) {
+                                if ((x + a < 8) && (x + a >= 0) && (y + b < 8) && (y + b >= 0) && board[y + b][x + a] == null) {
+                                    output[x + a][y + b] = false;
+                                }
+                            }
+                        }
+                        output[0][4] = true;
+                    }
                 }
             }
         }
@@ -83,6 +94,12 @@ public class Monkey implements Figure{
 
     @Override
     public void changeMode() {
+        retrievalMode = !retrievalMode;
+    }
 
+    @Override
+    public boolean customRequest() {
+        // returns if monkey is on retrieval mode
+        return retrievalMode;
     }
 }

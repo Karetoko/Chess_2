@@ -72,4 +72,9 @@ public class Elephant implements Figure{
     public void changeMode() {
 
     }
+
+    @Override
+    public boolean customRequest() {
+        return false;
+    }
 }

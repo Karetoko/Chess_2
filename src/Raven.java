@@ -47,4 +47,9 @@ public class Raven implements Figure{
     public void changeMode() {
 
     }
+
+    @Override
+    public boolean customRequest() {
+        return false;
+    }
 }

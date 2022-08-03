@@ -31,4 +31,9 @@ public class Bear implements Figure{
     public void changeMode() {
 
     }
+
+    @Override
+    public boolean customRequest() {
+        return false;
+    }
 }

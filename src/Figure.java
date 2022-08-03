@@ -24,5 +24,7 @@ public interface Figure {
     Queen: -none-
     King: planned -> removes banana from king when rescued by monkey (permanent!)
     */
-    public void changeMode();
+    void changeMode();
+
+    boolean customRequest();
 }
