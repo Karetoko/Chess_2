@@ -79,7 +79,11 @@ public class Monkey implements Figure{
                                 }
                             }
                         }
-                        output[0][4] = true;
+                        if (this.isBlack) {
+                            output[0][4] = true;
+                        } else {
+                            output[7][3] = true;
+                        }
                     }
                 }
             }

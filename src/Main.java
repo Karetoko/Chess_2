@@ -324,26 +324,41 @@ public class Main {
 
                         if (chessboard[boardPosConf[1]][boardPosConf[0]] != null && chessboard[boardPosConf[1]][boardPosConf[0]].getClass() == Monkey.class && chessboard[boardPosConf[1]][boardPosConf[0]].customRequest()) {
                             chessboard[boardPosConf[1]][boardPosConf[0]].changeMode();
-                            if (chessboard[4][0] == null) {
-                                chessboard[4][0] = prisonPlayerW[0];
-                                prisonPlayerW[0] = null;
+                            if (chessboard[boardPosConf[1]][boardPosConf[0]].isBlack()) {
+                                if (chessboard[4][0] == null) {
+                                    chessboard[4][0] = prisonPlayerW[0];
+                                    prisonPlayerW[0] = null;
+                                }
+                                chessboard[4][0].changeMode();
+                            } else {
+                                if (chessboard[3][7] == null) {
+                                    chessboard[3][7] = prisonPlayerB[0];
+                                    prisonPlayerB[0] = null;
+                                }
+                                chessboard[3][7].changeMode();
                             }
-                            chessboard[4][0].changeMode();
                         }
 
                         drawBoard(cd);
                         cd.show();
 
-
                         if ((chessboard[4][0] != null || chessboard[3][7] != null)) {
-                            if (chessboard[4][0].getClass() == Monkey.class && prisonPlayerW[0].customRequest() && (round % 2 == 0) && boardPosConf[0] == 0 && boardPosConf[1] == 4) {
+                            if (chessboard[4][0] != null && chessboard[4][0].getClass() == Monkey.class && prisonPlayerW[0].customRequest() && (round % 2 == 0) && boardPosConf[0] == 0 && boardPosConf[1] == 4) {
                                 inputPos = fromBoardCoordinates(4, 0);
                                 eventLevel = 5;
                                 if (!(boardPos[0] == 0 && boardPos[1] == 4)) {
                                     round--;
                                 }
                                 chessboard[4][0].changeMode();
-                                System.out.println("THROUGH MAIN");
+                                System.out.println("THROUGH MAIN - W");
+                            } else if (chessboard[3][7] != null && chessboard[3][7].getClass() == Monkey.class && prisonPlayerB[0].customRequest() && (round % 2 == 1) && boardPosConf[0] == 7 && boardPosConf[1] == 3) {
+                                inputPos = fromBoardCoordinates(3, 7);
+                                eventLevel = 6;
+                                if (!(boardPos[0] == 7 && boardPos[1] == 3)) {
+                                    round--;
+                                }
+                                chessboard[3][7].changeMode();
+                                System.out.println("THROUGH MAIN - B");
                             }
                         }
 
@@ -356,22 +371,36 @@ public class Main {
                         }
 
                         // eventLevel shall not be changed when a monkey is on retrieval mode!
-                        if (!(chessboard[4][0] != null && chessboard[4][0].getClass() == Monkey.class && chessboard[4][0].customRequest())) {
+                        if ((!(chessboard[4][0] != null && chessboard[4][0].getClass() == Monkey.class && chessboard[4][0].customRequest())) && (!(chessboard[3][7] != null && chessboard[3][7].getClass() == Monkey.class && chessboard[3][7].customRequest()))) {
                             eventLevel = 0;
+                            System.out.println("PASS 1");
                         }
+
                     } else {
                         cd.clear();
                         drawBoard(cd);
-                        if (!(chessboard[4][0] != null && chessboard[4][0].getClass() == Monkey.class)) {
+                        if ((!(chessboard[4][0] != null && chessboard[4][0].getClass() == Monkey.class)) || (!(chessboard[3][7] != null && chessboard[3][7].getClass() == Monkey.class)) ) {
                             cd.drawText(720, 1000, "You cannot move there with this figure!");
                         }
                         cd.show();
-                        if (!(chessboard[4][0] != null && chessboard[4][0].getClass() == Monkey.class)) {
+                        if ((!(chessboard[4][0] != null && chessboard[4][0].getClass() == Monkey.class)) || (!(chessboard[3][7] != null && chessboard[3][7].getClass() == Monkey.class))) {
                             eventLevel = 0;
                             System.out.println("CALLED AT 3");
+                            if ((chessboard[4][0] != null && chessboard[4][0].getClass() == Monkey.class)) {
+                                eventLevel = 5;
+                                // chessboard[4][0].changeMode();
+                            } else if ((chessboard[3][7] != null && chessboard[3][7].getClass() == Monkey.class)) {
+                                eventLevel = 6;
+                            }
+                            System.out.println("ALT 1");
                         } else {
-                            eventLevel = 5;
-                            // chessboard[4][0].changeMode();
+                            System.out.println("ALT 2");
+                            if ((chessboard[4][0] != null && chessboard[4][0].getClass() == Monkey.class)) {
+                                eventLevel = 5;
+                                // chessboard[4][0].changeMode();
+                            } else if ((chessboard[3][7] != null && chessboard[3][7].getClass() == Monkey.class)) {
+                                eventLevel = 6;
+                            }
                         }
                     }
                 } else if (eventLevel == 5) {
@@ -386,7 +415,6 @@ public class Main {
                     boardPos = toBoardCoordinates(inputPos[0], inputPos[1]);
                     if (chessboard[boardPos[1]][boardPos[0]] != null) {
                         figure = chessboard[boardPos[1]][boardPos[0]];
-                        boolean roundColour = (round % 2 == 0);
                         int[] figurePos = fromBoardCoordinates(boardPos[0], boardPos[1]);
                         cd.drawImage(figurePos[0], figurePos[1], "./src/red.png");
                         movesArray = figure.availableMoves(chessboard, boardPos[0], boardPos[1]);
@@ -397,6 +425,29 @@ public class Main {
                     } else {
                         eventLevel = 5;
                         System.out.println("CALLED 5");
+                    }
+                } else if (eventLevel == 6) {
+                    inputPos = fromBoardCoordinates(7,3);
+                    figure = null;
+                    cd.clear();
+                    drawBoard(cd);
+                    cd.show();
+                    System.out.println("EVENT LEVEL = 6");
+                    eventLevel = 4;
+                    int[] boardPos; // positions on the board, not actual coordinates on window!
+                    boardPos = toBoardCoordinates(inputPos[0], inputPos[1]);
+                    if (chessboard[boardPos[1]][boardPos[0]] != null) {
+                        figure = chessboard[boardPos[1]][boardPos[0]];
+                        int[] figurePos = fromBoardCoordinates(boardPos[0], boardPos[1]);
+                        cd.drawImage(figurePos[0], figurePos[1], "./src/red.png");
+                        movesArray = figure.availableMoves(chessboard, boardPos[0], boardPos[1]);
+                        drawMoves(cd, movesArray);
+                        cd.show();
+                        eventLevel = 2;
+                        // chessboard[boardPos[1]][boardPos[0]].changeMode();
+                    } else {
+                        eventLevel = 6;
+                        System.out.println("CALLED 6");
                     }
                 }
                 cd.show(5);
