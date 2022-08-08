@@ -33,10 +33,10 @@ Below and to the sides of the elephant are the **fishies**. Fishies move and att
 Also like a pawn, it can be _promoted_ when reaching the other side. In doing so, the fishie will turn into a **fishie queen**, which moves like a queen in chess.
 Note that a fishie queen is not equal to an actual queen!
 
-The **king** and **queen** move the same way as the chess equivalents.
+The **king** and **queen** move the same way as their chess equivalents.
 
 One might have noticed why the king has a banana on his head; this is due to the fact that when the king has been beaten, the game doesn't end _immediately_. Instead,
-the king lands in **jail**, which is located th the left and right of the board for each player respectively. The game can only be finished if one manages to capture the
+the king lands in **jail**, which is located on the left and right of the board for each player respectively. The game can only be finished if one manages to capture the
 _king and queen_ (i.e. when both are in jail). But here, the banana comes into play: The **monkey** can "free" the king _once_ by grabbing the king and dropping him next to jail.
 In order to achieve this, a certain constellation has to be achieved. For example: 
 
