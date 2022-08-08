@@ -53,5 +53,4 @@ He cannot attack anyone, but he can be killed. If killed, the bear cannot return
 Java, with the usage of the libary <a href=https://github.com/Krassnig/CodeDraw>_CodeDraw_</a>. Note that an older version of _CodeDraw_ is used here (never versions 
 of _CodeDraw_ have issues regarding reading `.png` files).
 
-**This game is still work in progress!!!**
-
+**This game should work now; bugs and glitches may/will appear, though!**
