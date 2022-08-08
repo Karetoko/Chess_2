@@ -26,6 +26,11 @@ public class Main {
     private static int[] inputPos = new int[2];
     private static int[] inputPosConf = new int[2];
     private static Figure figure = null;
+    private static boolean ravenKillB = false;
+    private static boolean ravenKillW = false;
+    private static boolean bearMoved = false;
+    private static boolean bearConfirm = false;
+    private static int[] bearPosition = new int[2];
 
     public static void main(String[] args) {
         File chess2 = new File("./src/chess_2.png");
@@ -260,10 +265,27 @@ public class Main {
                         if (figure.isBlack() == roundColour) {
                             int[] figurePos = fromBoardCoordinates(boardPos[0], boardPos[1]);
                             cd.drawImage(figurePos[0], figurePos[1], "./src/red.png");
+                            if (figure.getClass() == Raven.class) {
+                                if (ravenKillB && figure.isBlack()) {
+                                    figure.changeMode();
+                                } else if (ravenKillW && !figure.isBlack()) {
+                                    figure.changeMode();
+                                }
+                            }
                             movesArray = figure.availableMoves(chessboard, boardPos[0], boardPos[1]);
                             drawMoves(cd, movesArray);
                             cd.show();
                             eventLevel = 2;
+                            if (figure.getClass() == Raven.class) {
+                                if (figure.customRequest()) {
+                                    figure.changeMode();
+                                    if (figure.isBlack()) {
+                                        ravenKillB = false;
+                                    } else {
+                                        ravenKillW = false;
+                                    }
+                                }
+                            }
                         } else {
                             cd.clear();
                             drawBoard(cd);
@@ -291,6 +313,11 @@ public class Main {
                         Figure tempSave = null;
                         if (chessboard[boardPosConf[1]][boardPosConf[0]] != null) {
                             tempSave = chessboard[boardPosConf[1]][boardPosConf[0]];
+                            if (tempSave.isBlack()) {
+                                ravenKillB = true;
+                            } else {
+                                ravenKillW = true;
+                            }
                         }
                         chessboard[boardPosConf[1]][boardPosConf[0]] = chessboard[boardPos[1]][boardPos[0]];
                         if ((boardPosConf[0] != boardPos[0]) || (boardPosConf[1] != boardPos[1])) {
@@ -375,6 +402,21 @@ public class Main {
                             eventLevel = 0;
                             System.out.println("PASS 1");
                         }
+                        if (!bearMoved && (boardPosConf[0] == 3 && ((boardPosConf[1] == 3 || boardPosConf[1] == 4)) || (boardPosConf[0] == 4 && (boardPosConf[1] == 3 || boardPosConf[1] == 4))) && !bearConfirm) {
+                            eventLevel = 7;
+                            round--;
+                        }
+                        if (!bearMoved && (boardPosConf[0] == 3 && ((boardPosConf[1] == 3 || boardPosConf[1] == 4)) || (boardPosConf[0] == 4 && (boardPosConf[1] == 3 || boardPosConf[1] == 4))) && bearConfirm) {
+                            Bear finalBear = new Bear();
+                            chessboard[boardPosConf[1]][boardPosConf[0]] = finalBear;
+                            bearConfirm = false;
+                            bearMoved = true;
+                            bearPosition[0] = boardPosConf[0];
+                            bearPosition[1] = boardPosConf[1];
+                            eventLevel = 0;
+                            drawBoard(cd);
+                            cd.show();
+                        }
 
                     } else {
                         cd.clear();
@@ -401,6 +443,9 @@ public class Main {
                             } else if ((chessboard[3][7] != null && chessboard[3][7].getClass() == Monkey.class)) {
                                 eventLevel = 6;
                             }
+                        }
+                        if (bearConfirm) {
+                            eventLevel = 7;
                         }
                     }
                 } else if (eventLevel == 5) {
@@ -449,9 +494,20 @@ public class Main {
                         eventLevel = 6;
                         System.out.println("CALLED 6");
                     }
+                } else if (eventLevel == 7) {
+                    if (!bearMoved) {
+                        Bear temp = new Bear();
+                        movesArray = temp.availableMoves(chessboard, 0,0 );
+                        drawMoves(cd, movesArray);
+                        cd.show();
+                        eventLevel = 2;
+                        bearConfirm = true;
+                    } else {
+                        eventLevel = 7;
+                        System.out.println("CALLED 7");
+                    }
                 }
                 cd.show(5);
-
             }
         }
     }
@@ -566,55 +622,9 @@ public class Main {
         if (prisonPlayerW[1] != null) {
             prisonPlayerW[1].drawFigure(cd, 231-60 ,388);
         }
-    }
-
-
-    private static void gameRun(CodeDraw cd, MouseEvent me) {
-
-
-        if (!running) {
-            running = true; // ALWAYS first statement!
-            Figure figure = null;
-            int[] clickPos = new int[2];
-            int[] boardPos;
-            clickPos[0] = me.getX(); // [0] = x-coordinate
-            clickPos[1] = me.getY(); // [1] = y-coordinate
-            boardPos = toBoardCoordinates(clickPos[0], clickPos[1]);
-            if (chessboard[boardPos[0]][boardPos[1]] != null) {
-                figure = chessboard[boardPos[0]][boardPos[1]];
-            }
-            int[] figurePos = fromBoardCoordinates(boardPos[0], boardPos[1]);
-            cd.drawImage(figurePos[0], figurePos[1], "./src/red.png");
-            movesArray = figure.availableMoves(chessboard, boardPos[0], boardPos[1]);
-            drawMoves(cd, movesArray);
-            cd.show();
-            System.out.println("PASSED - 1");
-            /*
-            AtomicBoolean hasHappened = new AtomicBoolean(false);
-            cd.onKeyDown((CodeDraw codeDraw, KeyEvent keyEvent) -> {
-                hasHappened.set(true);
-            });
-            while (!hasHappened.get()) {
-                cd.show(10);
-            }
-            */
-            if (running) {
-                moveAllow = true;
-                cd.onMouseClick(Main::confirmMove);
-                moveAllow = false;
-            }
-            System.out.println("PASSED - 2");
-            while (!confirmed) {
-                cd.show(10);
-            }
-
-            int[] boardPosConf = toBoardCoordinates(playerPosSelect[0],playerPosSelect[1]);
-            figure.movementAnimation(cd,boardPos[0],boardPos[1],boardPosConf[0],boardPosConf[1]);
-            chessboard[boardPosConf[0]][boardPosConf[1]] = chessboard[boardPos[0]][boardPos[1]];
-            chessboard[boardPos[0]][boardPos[1]] = null;
-            drawBoard(cd);
-            cd.show();
-            running = false;
+        if (!bearMoved) {
+            Bear temp = new Bear();
+            temp.drawFigure(cd,670, 440);
         }
     }
 }

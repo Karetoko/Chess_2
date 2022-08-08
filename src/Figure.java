@@ -18,7 +18,7 @@ public interface Figure {
     ---USAGES---
     Fish: changes fish to fishQueen (permanent for given object!)
     Raven: Changes option for if Raven is allowed to kill any opponents in a given round (toggle to allow/disallow)
-    Bear: planned -> changes state from starting point to being moved (permanent!)
+    Bear: -none-
     Elephant: -none-
     Monkey: planned -> activates/deactivates "king retrieval" mode (main usage: different output in "availableMoves" method; toggle).
     Queen: -none-

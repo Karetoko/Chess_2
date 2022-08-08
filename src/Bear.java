@@ -19,7 +19,20 @@ public class Bear implements Figure{
 
     @Override
     public boolean[][] availableMoves(Figure[][] board, int x, int y) {
-        return new boolean[0][];
+        boolean[][] output = new boolean[8][8];
+        if (board[3][3] == null) {
+            output[3][3] = true;
+        }
+        if (board[3][4] == null) {
+            output[4][3] = true;
+        }
+        if (board[4][3] == null) {
+            output[3][4] = true;
+        }
+        if (board[4][4] == null) {
+            output[4][4] = true;
+        }
+        return output;
     }
 
     @Override
