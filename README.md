@@ -45,7 +45,7 @@ In order to achieve this, a certain constellation has to be achieved. For exampl
 By doing so, the banana on the king will dissapear.
 
 Let's go to our final piece on the board, the **bear**. The bear starts in the middle of the board, although not being on any field. He does not belong to any player.
-Any player/piece can move him around in the 2x2 area around the centre (fields D4, D5, E4, E5). 
+Any player can move him around; he can move one field into all directions (diagonals included).
 He cannot attack anyone, but he can be killed. If killed, the bear cannot return to the board.
 
 <h3>On what language is this game programmed?</h3>
