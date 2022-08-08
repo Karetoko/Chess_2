@@ -59,12 +59,12 @@ public class Fish implements Figure{
                     output[x][y + 1] = true;
                 }
                 if ((x + 1 < 8) && (y + 1 < 8) && board[y + 1][x + 1] != null) {
-                    if (!board[y + 1][x + 1].isBlack()) {
+                    if (!board[y + 1][x + 1].isBlack() || board[y + 1][x + 1].getClass() == Bear.class) {
                         output[x + 1][y + 1] = true;
                     }
                 }
                 if ((x - 1 >= 0) && (y + 1 < 8) && board[y + 1][x - 1] != null) {
-                    if (!board[y + 1][x - 1].isBlack()) {
+                    if (!board[y + 1][x - 1].isBlack() || board[y + 1][x - 1].getClass() == Bear.class) {
                         output[x - 1][y + 1] = true;
                     }
                 }
@@ -73,12 +73,12 @@ public class Fish implements Figure{
                     output[x][y - 1] = true;
                 }
                 if ((x + 1 < 8) && (y-1 >= 0) && board[y - 1][x + 1] != null) {
-                    if (board[y - 1][x + 1].isBlack()) {
+                    if (board[y - 1][x + 1].isBlack() || board[y - 1][x + 1].getClass() == Bear.class) {
                         output[x + 1][y - 1] = true;
                     }
                 }
                 if ((x - 1 >= 0) && (y-1 >= 0) && board[y - 1][x - 1] != null) {
-                    if (board[y - 1][x - 1].isBlack()) {
+                    if (board[y - 1][x - 1].isBlack() || board[y - 1][x - 1].getClass() == Bear.class) {
                         output[x - 1][y - 1] = true;
                     }
                 }

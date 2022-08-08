@@ -39,16 +39,16 @@ public class Raven implements Figure{
             }
         }
         if (enableKill) {
-            if ((x + 1 < 8) && (x + 1 >= 0) && (y < 8) && (y >= 0) && (board[y][x + 1] == null || board[y][x + 1].isBlack() != this.isBlack)) {
+            if ((x + 1 < 8) && (x + 1 >= 0) && (y < 8) && (y >= 0) && (board[y][x + 1] == null || board[y][x + 1].isBlack() != this.isBlack || (board[y][x + 1] != null && board[y][x + 1].getClass() == Bear.class))) {
                 output[x + 1][y] = true;
             }
-            if ((x < 8) && (x >= 0) && (y + 1 < 8) && (y + 1 >= 0) && (board[y + 1][x] == null || board[y + 1][x].isBlack() != this.isBlack)) {
+            if ((x < 8) && (x >= 0) && (y + 1 < 8) && (y + 1 >= 0) && (board[y + 1][x] == null || board[y + 1][x].isBlack() != this.isBlack || (board[y + 1][x] != null && board[y + 1][x].getClass() == Bear.class))) {
                 output[x][y + 1] = true;
             }
-            if ((x - 1 < 8) && (x - 1 >= 0) && (y < 8) && (y >= 0) && (board[y][x - 1] == null || board[y][x - 1].isBlack() != this.isBlack)) {
+            if ((x - 1 < 8) && (x - 1 >= 0) && (y < 8) && (y >= 0) && (board[y][x - 1] == null || board[y][x - 1].isBlack() != this.isBlack || (board[y][x - 1] != null && board[y][x - 1].getClass() == Bear.class))) {
                 output[x - 1][y] = true;
             }
-            if ((x < 8) && (x >= 0) && (y - 1 < 8) && (y - 1 >= 0) && (board[y - 1][x] == null || board[y - 1][x].isBlack() != this.isBlack)) {
+            if ((x < 8) && (x >= 0) && (y - 1 < 8) && (y - 1 >= 0) && (board[y - 1][x] == null || board[y - 1][x].isBlack() != this.isBlack || (board[y - 1][x] != null && board[y - 1][x].getClass() == Bear.class))) {
                 output[x][y - 1] = true;
             }
         }

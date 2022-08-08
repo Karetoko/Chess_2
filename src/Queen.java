@@ -41,7 +41,7 @@ public class Queen implements Figure{
                         tempY += j;
                         if (board[tempY][tempX] == null) {
                             output[tempX][tempY] = true;
-                        } else if (board[tempY][tempX].isBlack() != this.isBlack) {
+                        } else if (board[tempY][tempX].isBlack() != this.isBlack || board[tempY][tempX].getClass() == Bear.class) {
                             output[tempX][tempY] = true;
                             figureReached = true;
                         } else {

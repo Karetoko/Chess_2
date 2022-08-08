@@ -51,7 +51,7 @@ public class Monkey implements Figure{
                                 figureReached = true;
                             } else {
                                 if ((tempX + i < 8) && (tempX + i >= 0) && (tempY + j < 8) && (tempY + j >= 0)) {
-                                    if (board[tempY + j][tempX + i] == null || board[tempY + j][tempX + i].isBlack() != this.isBlack) {
+                                    if (board[tempY + j][tempX + i] == null || board[tempY + j][tempX + i].isBlack() != this.isBlack || (board[tempY + j][tempX + i] != null && board[tempY + j][tempX + i].getClass() == Bear.class)) {
                                         output[tempX + i][tempY + j] = true;
                                     } else {
                                         figureReached = true;

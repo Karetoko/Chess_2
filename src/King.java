@@ -37,7 +37,7 @@ public class King implements Figure{
         for (int i = -1; i < 2; i++) {
             for (int j = -1; j < 2; j++) {
                 if (!(i == 0 && j == 0)) {
-                    if ((x + i < 8) && (x + i >= 0) && (y + j < 8) && (y + j >= 0) && (board[y + j][x + i] == null || board[y + j][x + i].isBlack() != this.isBlack)) {
+                    if ((x + i < 8) && (x + i >= 0) && (y + j < 8) && (y + j >= 0) && (board[y + j][x + i] == null || board[y + j][x + i].isBlack() != this.isBlack || (board[y + j][x + i] != null && board[y + j][x + i].getClass() == Bear.class))) {
                         output[x + i][y + j] = true;
                     }
                 }

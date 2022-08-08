@@ -45,7 +45,7 @@ public class Elephant implements Figure{
                             if (stepCount % 2 == 1) {
                                 output[tempX][tempY] = true;
                             }
-                        } else if (board[tempY][tempX].isBlack() != this.isBlack) {
+                        } else if (board[tempY][tempX].isBlack() != this.isBlack || board[tempY][tempX].getClass() == Bear.class) {
                             if (stepCount % 2 == 1) {
                                 output[tempX][tempY] = true;
                                 figureReached = true;

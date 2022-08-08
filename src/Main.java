@@ -262,7 +262,7 @@ public class Main {
                     if (chessboard[boardPos[1]][boardPos[0]] != null) {
                         figure = chessboard[boardPos[1]][boardPos[0]];
                         boolean roundColour = (round % 2 == 0);
-                        if (figure.isBlack() == roundColour) {
+                        if (figure.isBlack() == roundColour || figure.getClass() == Bear.class) {
                             int[] figurePos = fromBoardCoordinates(boardPos[0], boardPos[1]);
                             cd.drawImage(figurePos[0], figurePos[1], "./src/red.png");
                             if (figure.getClass() == Raven.class) {
@@ -391,12 +391,6 @@ public class Main {
 
                         round++;
 
-                        if (prisonPlayerB[0] != null && prisonPlayerB[1] != null && prisonPlayerW[0] != null && prisonPlayerW[1] != null) {
-                            if ((prisonPlayerB[0].getClass() == King.class && prisonPlayerB[1].getClass() == Queen.class) || (prisonPlayerW[0].getClass() == King.class && prisonPlayerW[1].getClass() == Queen.class)) {
-                                hasWon = true; // game-ending condition
-                            }
-                        }
-
                         // eventLevel shall not be changed when a monkey is on retrieval mode!
                         if ((!(chessboard[4][0] != null && chessboard[4][0].getClass() == Monkey.class && chessboard[4][0].customRequest())) && (!(chessboard[3][7] != null && chessboard[3][7].getClass() == Monkey.class && chessboard[3][7].customRequest()))) {
                             eventLevel = 0;
@@ -409,6 +403,7 @@ public class Main {
                         if (!bearMoved && (boardPosConf[0] == 3 && ((boardPosConf[1] == 3 || boardPosConf[1] == 4)) || (boardPosConf[0] == 4 && (boardPosConf[1] == 3 || boardPosConf[1] == 4))) && bearConfirm) {
                             Bear finalBear = new Bear();
                             chessboard[boardPosConf[1]][boardPosConf[0]] = finalBear;
+                            chessboard[boardPosConf[1]][boardPosConf[0]].changeMode();
                             bearConfirm = false;
                             bearMoved = true;
                             bearPosition[0] = boardPosConf[0];
@@ -507,7 +502,33 @@ public class Main {
                         System.out.println("CALLED 7");
                     }
                 }
+                if ((prisonPlayerB[0] != null && prisonPlayerB[1] != null) || (prisonPlayerW[0] != null && prisonPlayerW[1] != null)) {
+                    String endText = "";
+                    if ((prisonPlayerB[0] != null && prisonPlayerB[1] != null) && (prisonPlayerB[0].getClass() == King.class && prisonPlayerB[1].getClass() == Queen.class)) {
+                        endText = "Black has won!";
+                    } else if ((prisonPlayerW[0] != null && prisonPlayerW[1] != null) && (prisonPlayerW[0].getClass() == King.class && prisonPlayerW[1].getClass() == Queen.class)) {
+                        endText = "White has won!";
+                    }
+                    hasWon = true; // game-ending condition
+                    cd.clear();
+                    drawBoard(cd);
+                    cd.drawText(720, 1000, endText);
+                }
                 cd.show(5);
+            }
+            if (hasWon) {
+                cd.show(5000);
+                for (int i = 10; i >= 0 ; i--) {
+                    cd.clear();
+                    if (i != 1) {
+                        cd.drawText(720, 1000, "Game will restart in " + i + " seconds!");
+                    } else {
+                        cd.drawText(720, 1000, "Game will restart in " + i + " second!");
+                    }
+                    drawBoard(cd);
+                    cd.show();
+                    cd.show(1000);
+                }
             }
         }
     }
